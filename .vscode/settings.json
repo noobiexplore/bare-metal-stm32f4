@@ -12,6 +12,8 @@
     "sync.h": "c",
     "ring-buffer.h": "c",
     "flash_common_all.h": "c",
-    "gpio.h": "c"
+    "gpio.h": "c",
+    "timer_common_f24.h": "c",
+    "timer_common_all.h": "c"
   }
 }

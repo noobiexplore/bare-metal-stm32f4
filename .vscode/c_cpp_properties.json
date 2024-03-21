@@ -3,8 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
-                //"${workspaceFolder}/bootloader/inc",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/app/inc"
             ],
             "defines": [
                 "STM32F4",
