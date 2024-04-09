@@ -6,7 +6,7 @@
 #include "core/ring-buffer.h"
 
 #define BAUD_RATE  (115200)
-#define RING_BUFFER_SIZE (64)
+#define RING_BUFFER_SIZE (128)  // For maximum 10ms latency
 
 static ring_buffer_t rb = {0U};
 
@@ -62,6 +62,7 @@ uint32_t uart_read(uint8_t* data, const uint32_t length){
   }
 
   for (uint32_t bytes_read= 0; bytes_read < length; bytes_read++){
+    // If data read fails, send how many bytes were read
     if (!ring_buffer_read(&rb, &data[bytes_read])){
       return bytes_read;
     }
