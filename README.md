@@ -4,3 +4,11 @@ by Low Byte Production.
 MCU: STM32F401RE Nucleo Board  
 library: libopencm3  
 OS: Linux mint  
+
+### fw-updater setup
+
+```bash
+npm install -g typescript ts-node nodemon
+npm install serialport
+npm install --save @types/node
+```
