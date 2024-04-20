@@ -6,6 +6,7 @@
 
 #include "core/uart.h"
 #include "core/system.h"
+#include "core/simple-timer.h"
 #include "comms.h"
 #include "bl-flash.h"
 
@@ -58,22 +59,15 @@ int main(void)
   // uart_setup();
   // comms_setup();
 
-  uint8_t data[1024] = {0};
-  for (uint16_t i = 0; i < 1024; i++) {
-    data[i] = i & 0xff;
-  }
+  simple_timer_t timer;
+
+  simple_timer_setup(&timer, 1000, true);
   
-  bl_flash_erase_main_application();
-  // Flash write sector 2 to 7 1 KByte data
-  bl_flash_write(0x08008000, data, 1024);
-  bl_flash_write(0x0800C000, data, 1024);
-  bl_flash_write(0x08010000, data, 1024);
-  bl_flash_write(0x08020000, data, 1024);
-  bl_flash_write(0x08040000, data, 1024);
-  bl_flash_write(0x08060000, data, 1024);
-
   while (true) {
-
+    if(simple_timer_has_elapsed(&timer)) {
+      volatile int x = 0;
+      x++;
+    }
   }
 
   // TODO Teardown
