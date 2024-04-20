@@ -129,6 +129,7 @@ bool comms_packet_available(void){
 
 void comms_write(comms_packet_t* packet){
   uart_write((uint8_t*)packet, PACKET_LENGTH);
+  comms_packet_copy(packet, &last_transmitted_packet);
 }
 
 
