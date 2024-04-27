@@ -35,6 +35,7 @@
   },
   {
     "arguments": [
+      "/usr/bin/gcc",
       "/usr/bin/arm-none-eabi-gcc",
       "-Os",
       "-std=c99",
@@ -66,6 +67,40 @@
     "directory": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader",
     "file": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader/src/comms.c",
     "output": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader/src/comms.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-Os",
+      "-std=c99",
+      "-ggdb3",
+      "-mthumb",
+      "-mcpu=cortex-m4",
+      "-mfloat-abi=hard",
+      "-mfpu=fpv4-sp-d16",
+      "-Wextra",
+      "-Wshadow",
+      "-Wimplicit-function-declaration",
+      "-Wredundant-decls",
+      "-Wmissing-prototypes",
+      "-Wstrict-prototypes",
+      "-fno-common",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Wall",
+      "-Wundef",
+      "-DSTM32F4",
+      "-I../libopencm3/include",
+      "-Iinc",
+      "-I../shared/inc",
+      "-c",
+      "-o",
+      "src/bl-flash.o",
+      "src/bl-flash.c"
+    ],
+    "directory": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader",
+    "file": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader/src/bl-flash.c",
+    "output": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader/src/bl-flash.o"
   },
   {
     "arguments": [
@@ -202,5 +237,39 @@
     "directory": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader",
     "file": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/shared/src/core/crc8.c",
     "output": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/shared/src/core/crc8.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-Os",
+      "-std=c99",
+      "-ggdb3",
+      "-mthumb",
+      "-mcpu=cortex-m4",
+      "-mfloat-abi=hard",
+      "-mfpu=fpv4-sp-d16",
+      "-Wextra",
+      "-Wshadow",
+      "-Wimplicit-function-declaration",
+      "-Wredundant-decls",
+      "-Wmissing-prototypes",
+      "-Wstrict-prototypes",
+      "-fno-common",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Wall",
+      "-Wundef",
+      "-DSTM32F4",
+      "-I../libopencm3/include",
+      "-Iinc",
+      "-I../shared/inc",
+      "-c",
+      "-o",
+      "../shared/src/core/simple-timer.o",
+      "../shared/src/core/simple-timer.c"
+    ],
+    "directory": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/bootloader",
+    "file": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/shared/src/core/simple-timer.c",
+    "output": "/media/fahim/Family/Fahim/Embedded_System/bare_metal_Arm_Cortex_M4/bare_metal_stm32F401/shared/src/core/simple-timer.o"
   }
 ]

@@ -1,4 +1,7 @@
 #include "libopencm3/cm3/nvic.h"
+#include "libopencm3/stm32/f4/nvic.h"
+#include "libopencm3/stm32/f4/rcc.h"
+#include "libopencm3/stm32/f4/usart.h"
 #include "libopencm3/stm32/rcc.h"
 #include "libopencm3/stm32/usart.h"
 
@@ -42,6 +45,13 @@ void uart_setup(void){
   nvic_enable_irq(NVIC_USART2_IRQ);
 
   usart_enable(USART2);
+}
+
+void uart_teardown(void) {
+  usart_disable_rx_interrupt(USART2);
+  usart_disable(USART2);
+  nvic_disable_irq(NVIC_USART2_IRQ);
+  rcc_periph_clock_disable(RCC_USART2);
 }
 
 
