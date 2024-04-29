@@ -27,7 +27,7 @@
 #define SYNC_SEQ_2  (0x7e)
 #define SYNC_SEQ_3  (0x10)
 
-#define DEFAULT_TIMEOUT  (5000)
+#define DEFAULT_TIMEOUT  (10000)
 
 typedef enum bl_state_t {
   BL_State_Sync,
@@ -176,14 +176,14 @@ int main(void)
         } else {
           check_for_timeout();
         }
-			} break;
+      } break;
 
       case BL_State_DeviceIDReq: {
         simple_timer_reset(&timer);
         comms_create_single_byte_packet(&packet, BL_PACKET_DEVICE_ID_REQ_DATA0);
         comms_write(&packet);
         state = BL_State_DeviceIDRes;
-			} break;
+      } break;
 
       case BL_State_DeviceIDRes: {
         if (comms_packet_available()) {
@@ -199,14 +199,14 @@ int main(void)
           check_for_timeout();
         }
 
-			} break;
+      } break;
 
       case BL_State_FWLengthReq: {
         simple_timer_reset(&timer);
         comms_create_single_byte_packet(&packet, BL_PACKET_FW_LENGTH_REQ_DATA0);
         comms_write(&packet);
         state = BL_State_FWLengthRes;
-			} break;
+      } break;
 
       case BL_State_FWLengthRes: {
         if (comms_packet_available()) {
@@ -229,13 +229,14 @@ int main(void)
         } else {
           check_for_timeout();
         }
-			} break;
+      } break;
 
       case BL_State_EraseApplication: {
         bl_flash_erase_main_application();
+        comms_create_single_byte_packet(&packet, BL_PACKET_READY_FOR_DATA_DATA0);
+        comms_write(&packet);
         simple_timer_reset(&timer);
         state = BL_State_RecieveFirmware;
-
 			} break;
 
       case BL_State_RecieveFirmware: {
@@ -252,12 +253,14 @@ int main(void)
             comms_create_single_byte_packet(&packet, BL_PACKET_UPDATE_SUCCESSFUL_DATA0);
             comms_write(&packet);
             state = BL_State_Done;
+          } else {
+            comms_create_single_byte_packet(&packet, BL_PACKET_READY_FOR_DATA_DATA0);
+            comms_write(&packet);
           }
         } else {
           check_for_timeout();
         }
-
-			} break;
+      } break;
 
       default: {
         state = BL_State_Sync;

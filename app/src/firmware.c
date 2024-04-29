@@ -47,7 +47,7 @@ int main(void)
   timer_pwm_set_duty_cycle(duty_cycle);
 
   while(1){
-    if (system_get_ticks() - start_time >= 30){
+    if (system_get_ticks() - start_time >= 10){
       duty_cycle += 1.0f;
       if (duty_cycle > 100.0f){
         duty_cycle = 0.0f;
@@ -59,10 +59,9 @@ int main(void)
       
     if (uart_data_available()){
       uint8_t data = uart_read_byte();
-      uart_write_byte(data + 1);
+      //uart_write_byte(data + 1);
     }
     
-    system_delay(1000);
   }
 
   // Never return

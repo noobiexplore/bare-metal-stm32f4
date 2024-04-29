@@ -2,6 +2,7 @@
 #include "comms.h"
 #include "core/uart.h"
 #include "core/crc8.h"
+#include "core/system.h"
 
 #define PACKET_BUFFER_LENGTH  (8)
 
@@ -116,6 +117,7 @@ bool comms_packet_available(void){
 void comms_write(comms_packet_t* packet){
   uart_write((uint8_t*)packet, PACKET_LENGTH);
   memcpy(&last_transmitted_packet, packet, sizeof(comms_packet_t));
+  system_delay(100);
 }
 
 
